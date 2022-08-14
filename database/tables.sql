@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS app_users (
 
 CREATE TABLE IF NOT EXISTS boards (
     id uuid PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    user_id uuid REFERENCES app_users(id)
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
