@@ -6,6 +6,6 @@ const router = Router();
 
 router.post("/", controller.addUser);
 router.delete("/:id", controller.removeUser);
-router.get("/:id/boards", controller.getBoards);
+router.get("/:id/", controller.getUser);
 
 module.exports = router;

@@ -31,7 +31,31 @@ const removeTask = (req, res) => {
   );
 };
 
+const getTask = (req, res) => {
+  pool.query(
+    `SELECT * from tasks
+     WHERE id = '${req.params["id"]}'; `,
+    (error, results) => {
+      if (error) throw error;
+      res.status(200).json(results.rows);
+    }
+  );
+};
+
+const getTasksByBoard = (req, res) => {
+  pool.query(
+    `SELECT * FROM tasks
+    WHERE board_id = '${req.params["id"]}';`,
+    (error, results) => {
+      if (error) throw error;
+      res.status(200).json(results.rows);
+    }
+  );
+};
+
 module.exports = {
   addTask,
   removeTask,
+  getTask,
+  getTasksByBoard,
 };

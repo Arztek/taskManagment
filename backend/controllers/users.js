@@ -33,10 +33,10 @@ const removeUser = (req, res) => {
   );
 };
 
-const getBoards = (req, res) => {
+const getUser = (req, res) => {
   pool.query(
-    `SELECT * FROM boards
-    WHERE user_id = '${req.params["id"]}';`,
+    `SELECT * from app_users
+     WHERE id = '${req.params["id"]}'; `,
     (error, results) => {
       if (error) throw error;
       res.status(200).json(results.rows);
@@ -47,5 +47,5 @@ const getBoards = (req, res) => {
 module.exports = {
   addUser,
   removeUser,
-  getBoards,
+  getUser,
 };

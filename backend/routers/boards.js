@@ -6,6 +6,7 @@ const router = new Router();
 
 router.post("/", controller.addBoard);
 router.delete("/:id", controller.removeBoard);
-router.get("/:id/tasks", controller.getTasks);
+router.get("/:id", controller.getBoard);
+router.get("/byUser/:id", controller.getBoardsByUser);
 
 module.exports = router;

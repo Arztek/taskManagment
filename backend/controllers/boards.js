@@ -30,10 +30,21 @@ const removeBoard = (req, res) => {
   );
 };
 
-const getTasks = (req, res) => {
+const getBoard = (req, res) => {
   pool.query(
-    `SELECT * FROM tasks
-    WHERE board_id = '${req.params["id"]}';`,
+    `SELECT * from boards
+     WHERE id = '${req.params["id"]}'; `,
+    (error, results) => {
+      if (error) throw error;
+      res.status(200).json(results.rows);
+    }
+  );
+};
+
+const getBoardsByUser = (req, res) => {
+  pool.query(
+    `SELECT * FROM boards
+    WHERE user_id = '${req.params["id"]}';`,
     (error, results) => {
       if (error) throw error;
       res.status(200).json(results.rows);
@@ -44,5 +55,6 @@ const getTasks = (req, res) => {
 module.exports = {
   addBoard,
   removeBoard,
-  getTasks,
+  getBoard,
+  getBoardsByUser,
 };
