@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS app_users (
     username TEXT NOT NULL,
     password TEXT NOT NULL,
     age INT NOT NULL,
+    refresh_token TEXT,
     usage_id uuid REFERENCES usages(id)
 );
 

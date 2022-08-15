@@ -1,13 +1,13 @@
 const jwt = require("jsonwebtoken");
 
 //generate token
-const genToken = (username) => {
-  return jwt.sign({ name: username }, process.env.ACCESS_TOKEN_SECRET);
+const genRefreshToken = (username) => {
+  return jwt.sign({ username: username }, process.env.REFRESH_TOKEN_SECRET);
 };
 
 //generate token with exp
-const genTokenWithExp = (username) => {
-  return jwt.sign({ name: username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15s" });
+const genAccessToken = (username) => {
+  return jwt.sign({ username: username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "30m" });
 };
 
 //middleware
@@ -23,4 +23,4 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-module.exports = { authenticateToken, genToken, genTokenWithExp };
+module.exports = { authenticateToken, genRefreshToken, genAccessToken };
