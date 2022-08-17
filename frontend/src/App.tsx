@@ -1,13 +1,13 @@
-import { Box } from "@mui/material";
 import Login from "./components/Login";
 import NavBar from "./components/Navbar";
+import "./App.css";
 
 const App = () => {
   return (
-    <Box>
-      <NavBar logged={true}></NavBar>
+    <div style={{ backgroundImage: 'url("/public/wave.svg")' }}>
+      <NavBar logged={false}></NavBar>
       <Login></Login>
-    </Box>
+    </div>
   );
 };
 

@@ -39,6 +39,7 @@ const refresh = (req, res) => {
     )
     .then((result) => {
       if (!result.rows[0]) return res.status(403).json({ err: "Unauthorized" });
+
       jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) res.status(403).json({ err: "Unauthorized" });
         const accessToken = genAccessToken(user.username);
