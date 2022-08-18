@@ -2,3 +2,9 @@ html body {
   background-image: url("/public/wave.svg");
   background-repeat: no-repeat;
 }
+
+html,
+body,
+#root {
+  height: 100%;
+}
